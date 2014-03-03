@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Info windows</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+// This example displays a marker at the center of Australia.
+// When the user clicks the marker, an info window opens.
+
+function initialize() {
+	
+	var custom = [
+		{
+			"featureType": "water",
+			"stylers": [
+				{
+					"color": "#37a38b"
+				}
+			]
+		}
+	]
+	
+	
+  var myLatlng = new google.maps.LatLng(-23.6824124,-46.5952992);
+  var mapOptions = {
+    zoom: 4,
+    center: myLatlng,
+	styles: custom
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Sao Paulo, Brazil</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Sao Paulo</b>, is the largest city in Brazil ' +
+      'covering more than 18 million people in the capital. '+
+      'São Paulo has 152 theaters, 90 museums, 260 cinemas, 39 cultural centers, 54 parks and green areas, 4 theme parks, 7 large concert halls and much more.'+
+      'This is the 4th largest city in the world, the largest in the Southern Hemisphere, with more than 17 million people, and has welcomed people of some 70 different nationalities throughout its history. Imagine that in 1890, more than half the population was already formed by immigrants.  '+
+      '<h3>I chose Sao Paulo because its the city that I was born.</h3>'+
+	  
+	  '<p>Attribution: Sao Paulo, <a href="http://www.cervejapaulistania.com/Paulistania_Beer/Sao_Paulo_Curiosities.html">'+
+      'http://www.cervejapaulistania.com/Paulistania_Beer/Sao_Paulo_Curiosities.html</a> '+
+      '</p>'+
+      '</div>'+
+      '</div>';
+
+  var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  });
+	
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Uluru (Ayers Rock)',
+	  icon: 'pin.png'
+	  
+  });
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>

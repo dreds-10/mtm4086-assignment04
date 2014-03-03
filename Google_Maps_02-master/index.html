@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>		
+	
+		
+		
+		
+		
+		function initialize() {
+		
+		  var custom = [
+			{
+				"featureType": "water",
+				"stylers": [
+					{
+						"color": "#202529"
+					}
+				]
+			},
+			{
+				"featureType": "landscape",
+				"stylers": [
+					{
+						"color": "#828c94"
+					}
+				]
+			},
+			{
+				"featureType": "poi",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#ff4141"
+					},
+					{
+						"lightness": 5
+					}
+				]
+			},
+			{
+				"featureType": "road.highway",
+				"elementType": "geometry.fill",
+				"stylers": [
+					{
+						"color": "#202529"
+					}
+				]
+			},
+			{
+				"featureType": "road.highway",
+				"elementType": "geometry.stroke",
+				"stylers": [
+					{
+						"color": "#0a131b"
+					},
+					{
+						"lightness": 25
+					}
+				]
+			},
+			{
+				"featureType": "road.arterial",
+				"elementType": "geometry.fill",
+				"stylers": [
+					{
+						"color": "#0a131b"
+					}
+				]
+			},
+			{
+				"featureType": "road.arterial",
+				"elementType": "geometry.stroke",
+				"stylers": [
+					{
+						"color": "#0a131b"
+					},
+					{
+						"lightness": 16
+					}
+				]
+			},
+			{
+				"featureType": "road.local",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#000000"
+					}
+				]
+			},
+			{
+				"elementType": "labels.text.fill",
+				"stylers": [
+					{
+						"color": "#ffffff"
+					}
+				]
+			},
+			{
+				"elementType": "labels.text.stroke",
+				"stylers": [
+					{
+						"color": "#222222"
+					},
+					{
+						"lightness": 13
+					}
+				]
+			},
+			{
+				"featureType": "transit",
+				"stylers": [
+					{
+						"color": "#146474"
+					}
+				]
+			},
+			{
+				"featureType": "administrative",
+				"elementType": "geometry.fill",
+				"stylers": [
+					{
+						"color": "#000000"
+					}
+				]
+			},
+			{
+				"featureType": "administrative",
+				"elementType": "geometry.stroke",
+				"stylers": [
+					{
+						"color": "#144b53"
+					},
+					{
+						"lightness": 14
+					},
+					{
+						"weight": 1.4
+					}
+				]
+			}
+		]
+
+		  
+		  var mapOptions = {
+			zoom: 6,
+			center: new google.maps.LatLng(21.1289956,82.7791754),
+			styles: custom
+
+		  };
+		  var map = new google.maps.Map(document.getElementById('map-canvas'),
+			  mapOptions);  
+		  }
+		
+		
+		google.maps.event.addDomListener(window, 'load', initialize);
+		
+		
+		
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
